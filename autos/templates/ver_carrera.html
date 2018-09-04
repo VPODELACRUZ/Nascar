@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    <title>  Ver </title>
+{% endblock %}
+
+ 
+{% block content %}
+
+    <h1>  {{ p.nombre }}</h1>
+    <table class="table table-dark">
+            <thead>
+              <tr>
+
+                   
+                <th scope="col">Nombre</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Fecha inicio</th>
+                <th scope="col">Fecha final</th>
+                <th scope="col">Competidores</th>
+                
+              
+              </tr>
+            </thead>
+    
+          
+          
+            <tbody>
+              <tr>
+                <td> {{ p.nombre }} </td>
+                <td> {{ p.lugar }} </td>
+                <td> {{ p.fecha_inicio }}</td>
+                <td> {{ p.fecha_final }}</td>
+                <td> {% for i in p.competidores.all %}
+                 *{{i}}<br>
+                  {%endfor%}
+                </td>
+              </tr>
+            </tbody>
+        
+          </table>
+
+
+          <div class="row">
+          <div class="col-sm">
+                       
+            <div> <center><div class="titulodos"><span class="titulospandos">Detalles</span>  </div></center>
+<center><div class="detalle"><span class="detallespan">{{ p.detalle }}</span>  </div></center></div>
+ <div class="detallescompletos">
+    <span class="detallecompletosspan">Nombre: {{ p.nombre }}<br></span>
+    <span class="detallecompletosspan"> Lugar: {{ p.lugar }}<br></span>
+    <span class="detallecompletosspan"> Fecha inicio: {{ p.fecha_inicio }}<br></span>
+    <span class="detallecompletosspan"> Fecha final: {{ p.fecha_final }}<br></span>
+    
+ </div>
+
+ {% if user.is_authenticated %}
+ <div class="acciones">
+<a class="btn btn-warning" href="/editar_carrera/{{p.id}}"> editar</a>
+<a class="btn btn-danger" href="/eliminar_carrera/{{p.id}}"> eliminar</a>
+
+
+</div>
+{% endif%}
+          </div>
+
+          
+          <center><div class="contenedor2">
+                                
+            
+ 
+         
+            <center> <div class="foto" >
+                    <img class="imagen2" src="/media/{{p.foto}}" >
+                </div></center>
+               
+        
+            </div></center>
+        </div>
+
+
+{% endblock %}
+   

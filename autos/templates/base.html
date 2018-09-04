@@ -1,0 +1,226 @@
+<DOCTYPE html>
+<html>
+<head>
+
+      
+  
+        <link rel="stylesheet" href="/static/css/bootstrap.css" >
+  
+        <link rel=stylesheet type="text/css" href="/static/css/estilo1.css"> 
+        <link rel="icon" type="image/png" href="/static/imagenes/apple-icon.png" />
+
+
+    {%  block titulo %}
+    {% endblock %}
+</head>
+ <body>
+
+ <body class="fondo" background="/static/imagenes/fondo.jpg">
+
+  
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <img class="logosuperior" src="/static/imagenes/nascar3.png">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+     
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+              <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+           
+           
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Listas
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/lista_auto">Autos</a>
+                <a class="dropdown-item" href="/lista_piloto">Pilotos</a>
+                <a class="dropdown-item" href="/lista_carrera">Carreras</a>
+                <a class="dropdown-item" href="/lista_mecanico">Mecanicos</a>
+                <a class="dropdown-item" href="/lista_patrocinador">Patrocinadores</a>
+              </div>
+            </li>
+
+
+            
+
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Agregar
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/agregar_auto">Autos</a>
+                <a class="dropdown-item" href="/agregar_piloto">Pilotos</a>
+                <a class="dropdown-item" href="/agregar_carrera">Carreras</a>
+                <a class="dropdown-item" href="/agregar_mecanico">Mecanicos</a>
+                <a class="dropdown-item" href="/agregar_patrocinador">Patrocinadores</a>
+              </div>
+      </li>
+
+      <li class="nav-item active">
+                    <a class="nav-link" href="/lista_perfil">Perfiles <span class="sr-only">(current)</span></a>
+                  </li>
+
+            <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                  </li>
+                  
+                 
+
+
+            {% else %}
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Iniciar Sesion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/login">Login</a>
+                      <a class="dropdown-item" href="/crear_perfil">Registrarse</a>
+                     </div>
+            </li>
+            {% endif %}
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+     
+    </div>
+  </nav>
+
+ 
+     <!--<nav class="navbar navbar-expand-lg navbar-dark ">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown" >
+              <ul class="navbar-nav">
+                <img class="logosuperior" src="/static/imagenes/nascar3.png">
+               
+              
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+               
+               
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Listas
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/lista_auto">Lista autos</a>
+                    <a class="dropdown-item" href="/lista_piloto">Lista pilotos</a>
+                    <a class="dropdown-item" href="/lista_carrera">Lista carreras</a>
+                    <a class="dropdown-item" href="/lista_mecanico">Lista mecanicos</a>
+                    <a class="dropdown-item" href="/lista_patrocinador">Lista patrocinadores</a>
+                  </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Agregar
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="/agregar_auto">Agregar autos</a>
+                          <a class="dropdown-item" href="/agregar_piloto">Agregar pilotos</a>
+                          <a class="dropdown-item" href="/agregar_carrera">Agregar carreras</a>
+                          <a class="dropdown-item" href="/agregar_mecanico">Agregar mecanicos</a>
+                          <a class="dropdown-item" href="/agregar_patrocinador">Agregar patrocinadores</a>
+                        </div>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item active">
+                        <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                      </li>
+                      
+                     
+
+
+                {% else %}
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Iniciar Sesion
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="/login">Login</a>
+                          <a class="dropdown-item" href="/register">Registrarse</a>
+                         </div>
+                </li>
+                {% endif %}
+
+              </ul>
+            </div>
+          </nav>-->
+
+
+
+
+
+       
+
+          <div  class="container">
+            {% block content %}
+         
+         
+             {% endblock %}
+         </div>
+
+
+<div class="wrapper">
+       <center><img class="imagenpie" src="/static/imagenes/nascar3.png"></center> 
+        <div class="push"></div>
+
+
+        <div class="footer-column social-media">
+            <nav>
+                <ul role="menu">
+                    <li role="none presentation">
+                        <a class="link" href="https://www.facebook.com/nascar/" target="_blank">
+                            <img src="/static/imagenes/pie_facebook_logo.png">
+                            Facebook
+                        </a>
+                    </li>
+                    <li role="none presentation">
+                        <a  href="https://www.twitter.com/nascar/" target="_blank">
+                           <img src="/static/imagenes/pie_twitter_logo.png">
+                            Twitter
+                        </a>
+                    </li>
+                    <li role="none presentation">
+                        <a   href="https://www.youtube.com/nascar/" target="_blank">
+                            <img src="/static/imagenes/pie_youtube_logo.png">
+                            Youtube
+                        </a>
+                    </li>   
+                </ul>
+               
+            </nav>
+        </div>
+   
+   <center><div class="footer">
+        <p>Copyright (c) 2018<br>
+          Derechos reservados <br>
+          ADSI 1493994<br>
+          Power by Jheferson Bolaños De La cruz
+        </p>
+   </div></center>
+   </div>
+
+      
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

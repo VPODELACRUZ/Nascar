@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<link rel=stylesheet type="text/css" href="estilo1.css"> 
+    <title>  Lista Patrocinadores </title>
+{% endblock %}
+
+ 
+{% block content %}
+
+<center>
+    <div class="titulo"><span class="titulospan">Lista de patrocinadores</span> </div></center>
+
+   
+
+{% for p in patro %}
+
+    <p>
+
+      
+                            <center><div class="contenedor">
+                                
+                               <center> 
+                                <div class="propiedades">
+                    
+                                 <div class="nombre">{{ p.nombre }} </div>
+                                
+                                </div>
+                            </center>
+                    
+                            
+                        <center> <div class="foto" >
+                                <img class="imagen" src="/media/{{p.foto}}" >
+                            </div></center>
+                           
+                            <center>
+
+
+                                    {% if user.is_authenticated %}
+                                    <div class="acciones">
+                            <a class="btn btn-primary" href="/ver_patrocinador/{{p.id}}"> ver detalle</a>
+                            <a class="btn btn-warning" href="/editar_patrocinador/{{p.id}}"> editar</a>
+                            <a class="btn btn-danger" href="/eliminar_patrocinador/{{p.id}}"> eliminar</a>
+                    
+                            
+                        </div>
+
+                        {% else %}
+
+
+                        <div class="acciones">
+                                <a class="btn btn-primary" href="/ver_patrocinador/{{p.id}}"> ver detalle</a>
+                                
+                            
+                                
+                            </div>
+
+                            {% endif %}
+                    </center>
+                    
+                        </div></center>
+                   
+
+    </p>
+
+    {% endfor %}
+ {% endblock %}

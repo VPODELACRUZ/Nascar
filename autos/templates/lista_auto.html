@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+
+{% block titulo %}
+
+    <title>  Lista Autos</title>
+    
+{% endblock %}
+
+ 
+{% block content %}
+    <center><div class="titulo"><span class="titulospan">Lista de autos</span>  </div></center>
+   
+
+
+
+    {% for p in auto %}
+
+<p>
+
+
+  
+     <center>
+<div class="contenedor">
+    
+   <center> 
+       <div class="propiedades">
+        <div class="nombre">{{ p.nombre }}</div>
+     
+    </div>
+</center>
+    
+    
+    <center> <div class="foto" >
+        <img class="imagen" src="/media/{{p.foto}}" >
+    </div></center>
+
+<center>
+        {% if user.is_authenticated %}
+    <div class="acciones">
+        <a class="btn btn-primary" href="/ver_producto/{{p.id}}" role="button">Ver detalle</a>
+        <a class="btn btn-warning" href="/editar_auto/{{p.id}}">Editar</a>
+        <a class="btn btn-danger" href="/eliminar_auto/{{p.id}}" role="button">Eliminar</a>
+    
+    </div>
+    {% else %}
+
+    <div class="acciones">
+        
+            <a class="btn btn-primary" href="/ver_producto/{{p.id}}" role="button" >Ver detalle</a>
+            
+        </div>
+
+    {% endif %}
+</center>
+
+    </div>
+</center>
+    
+
+   
+   
+ 
+
+    </p>
+
+
+    {% endfor %}
+
+   
+ {% endblock %}

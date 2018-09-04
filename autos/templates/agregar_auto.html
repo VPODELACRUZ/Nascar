@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    <title>  Agregar </title>
+{% endblock %}
+
+ 
+{% block content %}
+
+    <h1>  agregar autos </h1>
+    
+
+
+
+
+    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+            {% for field in formulario %}
+                <div class="field_container">     	
+                    <div class="col-md-2">{{ field.label_tag }}</div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-2">{{ field }}</div>
+                    <div class="clearfix"></div>
+                    {% if field.errors %}
+                    <div class="row">
+                    <div class="label label-danger col-md-2">
+                        {{ field.errors  }}
+            </div>
+            </div>
+                {% endif %}
+                </div>
+            {% endfor %}
+                    <input class="btn btn-primary" type="submit" value="Save">
+            </form>
+            
+
+    
+    
+{% endblock %}
+   

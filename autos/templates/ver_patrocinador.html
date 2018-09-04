@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    <title>  Ver </title>
+{% endblock %}
+
+ 
+{% block content %}
+
+    <h1>  {{ p.nombre }}</h1>
+
+    
+
+
+    <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Web</th>
+        
+              
+              </tr>
+            </thead>
+    
+          
+          
+            <tbody>
+              <tr>
+
+
+                <td> {{ p.nombre }} </td>
+                <td> {{ p.direccion }}</td>
+                <td> {{ p.telefono }}</td>
+                <td> {{ p.web}}</td>
+              
+              </tr>
+            </tbody>
+        
+          </table>
+
+          <div class="row">
+
+          <div class="col-sm">
+               
+            <div> <center><div class="titulodos"><span class="titulospandos">Detalles</span>  </div></center>
+<center><div class="detalle"><span class="detallespan">{{ p.detalle }}</span>  </div></center></div>
+ <div class="detallescompletos">
+    <span class="detallecompletosspan">Nombre: {{ p.nombre }}<br></span>
+    <span class="detallecompletosspan"> Telefono: {{ p.telefono }}<br></span>
+    <span class="detallecompletosspan"> Direccion: {{ p.direccion }}<br></span>
+    <span class="detallecompletosspan"> Web: {{ p.web }}<br></span>
+
+
+ </div>
+ {% if user.is_authenticated %}
+ <div class="acciones">
+<a class="btn btn-warning" href="/editar_patrocinador/{{p.id}}"> editar</a>
+<a class="btn btn-danger" href="/eliminar_patrocinador/{{p.id}}"> eliminar</a>
+
+
+</div>
+{% endif%}
+          </div>
+
+
+
+          <center><div class="contenedor2">
+                                
+            
+ 
+         
+     <center> <div class="foto" >
+             <img class="imagen2" src="/media/{{p.foto}}" >
+         </div></center>
+        
+ 
+     </div></center>
+    </div>
+{% endblock %}
+   

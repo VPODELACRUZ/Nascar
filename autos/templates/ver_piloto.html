@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    <title>  Ver </title>
+{% endblock %}
+
+ 
+{% block content %}
+
+    <h1> {{ p.nombre }} {{ p.apellido }}</h1>
+    <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Lugar Nacimiento</th>
+                <th scope="col">Web</th>
+                <th scope="col">Patrocinador</th>
+                <th scope="col">Auto</th>
+              
+              </tr>
+            </thead>
+    
+          
+          
+            <tbody>
+              <tr>
+
+
+                <td> {{ p.nombre }} </td>
+                <td> {{ p.apellido }} </td>
+                <td> {{ p.edad }}</td>
+                <td> {{ p.genero }}</td>
+                <td> {{ p.cedula }}</td>
+                <td> {{ p.direccion }}</td>
+                <td> {{ p.lugar_nacimiento }}</td>
+                <td> {{ p.web}}</td>
+                <td> {{ p.patrocinador}}</td>
+                <td>  {% for i in p.auto.all %}
+                        {{i}}
+                         {%endfor%}</td>
+                
+              </tr>
+            </tbody>
+        
+          </table>
+
+          <div class="row">
+
+          <div class="col-sm">
+               
+            <div> <center><div class="titulodos"><span class="titulospandos">Detalles</span>  </div></center>
+<center><div class="detalle"><span class="detallespan">{{ p.detalle }}</span>  </div></center></div>
+ <div class="detallescompletos">
+    <span class="detallecompletosspan">Nombre: {{ p.nombre }}<br></span>
+    <span class="detallecompletosspan"> Apellido: {{ p.apellido }}<br></span>
+    <span class="detallecompletosspan"> Edad: {{ p.edad }}<br></span>
+    <span class="detallecompletosspan"> Genero: {{ p.genero }}<br></span>
+    <span class="detallecompletosspan"> Cedula: {{ p.cedula }}<br></span>
+    <span class="detallecompletosspan"> Direccion: {{ p.direccion }}<br></span>
+    <span class="detallecompletosspan"> Lugar nacimiento: {{ p.lugar_nacimiento }}<br></span>
+    <span class="detallecompletosspan"> Web: {{ p.web }}<br></span>
+
+
+ </div>
+
+
+ 
+ {% if user.is_authenticated %}
+ <div class="acciones">
+<a class="btn btn-warning" href="/editar_piloto/{{p.id}}"> editar</a>
+<a class="btn btn-danger" href="/eliminar_piloto/{{p.id}}"> eliminar</a>
+
+
+</div>
+{% endif%}
+          </div>
+
+          <center><div class="contenedor2">
+                                
+            
+ 
+         
+            <center> <div class="foto" >
+                    <img class="imagen2" src="/media/{{p.foto}}" >
+                </div></center>
+               
+        
+            </div></center></div>
+
+
+
+{% endblock %}
+   
